@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Dubai Luxury Theme - Gold & Navy */
+    --background: 220 30% 6%;
+    --foreground: 45 30% 95%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 45 30% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 45 30% 95%;
+
+    /* Gold accent - primary action */
+    --primary: 43 74% 49%;
+    --primary-foreground: 220 30% 6%;
+
+    /* Navy secondary */
+    --secondary: 220 40% 18%;
+    --secondary-foreground: 45 30% 95%;
+
+    --muted: 220 25% 15%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 43 60% 40%;
+    --accent-foreground: 45 30% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 30% 95%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 15%;
+    --ring: 43 74% 49%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gold: 43 74% 49%;
+    --gold-light: 45 80% 70%;
+    --gold-dark: 40 70% 35%;
+    --navy: 220 40% 12%;
+    --navy-light: 220 35% 20%;
+    --navy-dark: 220 45% 6%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(43 74% 49%), hsl(45 80% 60%));
+    --gradient-navy: linear-gradient(180deg, hsl(220 40% 12%), hsl(220 45% 6%));
+    --gradient-hero: linear-gradient(180deg, hsl(220 45% 8%) 0%, hsl(220 40% 12%) 50%, hsl(220 35% 15%) 100%);
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px hsl(43 74% 49% / 0.25);
+    --shadow-card: 0 8px 40px hsl(0 0% 0% / 0.4);
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 220 40% 10%;
+    --sidebar-foreground: 45 30% 95%;
+    --sidebar-primary: 43 74% 49%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 35% 18%;
+    --sidebar-accent-foreground: 45 30% 95%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 43 74% 49%;
+  }
+
+  .dark {
+    /* Same as root - dark by default */
+    --background: 220 30% 6%;
+    --foreground: 45 30% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-gold {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300;
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-gold:hover {
+    @apply scale-105;
+    box-shadow: 0 6px 40px hsl(43 74% 49% / 0.4);
+  }
+
+  .card-luxury {
+    @apply bg-card border border-border rounded-xl p-6;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+  }
+
+  .input-luxury {
+    @apply bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200;
+  }
+
+  .vsl-container {
+    @apply w-full bg-navy-light rounded-xl overflow-hidden border border-border;
+    box-shadow: var(--shadow-card);
+  }
+
+  .vsl-container wistia-player {
+    display: block;
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
