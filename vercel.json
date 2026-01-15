@@ -1,8 +1,21 @@
 {
-  "rewrites": [
+  "builds": [
     {
-      "source": "/freeguide/:path*",
-      "destination": "/freeguide/index.html"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/freeguide/(.*)",
+      "dest": "/freeguide/index.html"
+    },
+    {
+      "src": "/freeguide",
+      "dest": "/freeguide/index.html"
     }
   ]
 }
