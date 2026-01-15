@@ -11,11 +11,19 @@
   "routes": [
     {
       "src": "/freeguide/(.*)",
-      "dest": "/freeguide/index.html"
+      "dest": "/index.html"
     },
     {
       "src": "/freeguide",
-      "dest": "/freeguide/index.html"
+      "dest": "/index.html"
+    },
+    {
+      "src": "/thank-you",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/((?!api).*)",
+      "dest": "/index.html"
     }
   ]
 }
