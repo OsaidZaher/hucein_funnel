@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/freeguide/(.*)",
+      "source": "/freeguide/:path*",
       "destination": "/freeguide/index.html"
     }
   ]
