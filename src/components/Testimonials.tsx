@@ -8,7 +8,7 @@ interface VideoTestimonial {
 const videoTestimonials: VideoTestimonial[] = [
   { mediaId: "ew221wrysg", name: "Kazeem" },
   { mediaId: "mqwmrdeti6", name: "Rebecca" },
-  { mediaId: "a6xc23ujzq", name: "Young Mike" },
+  { mediaId: "a6xc23ujzq", name: "Mike" },
 ];
 
 const Testimonials = () => {
