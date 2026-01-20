@@ -1,10 +1,22 @@
+import { useEffect } from "react";
 import { ChevronDown, Shield, Clock, FileCheck, MessageCircle } from "lucide-react";
 import VSLPlayer from "@/components/VSLPlayer";
 import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import GHLInlineForm from "@/components/GHLInlineForm";
+import { useMetaPixel } from "@/hooks/useMetaPixel";
 
 const Index = () => {
+  const { trackViewContent } = useMetaPixel();
+
+  // Track ViewContent when landing on the page
+  useEffect(() => {
+    trackViewContent({
+      content_name: 'Dubai Golden Visa Guide Landing Page',
+      content_category: 'Lead Magnet',
+    });
+  }, [trackViewContent]);
+
   const scrollToFAQs = () => {
     document.getElementById("faqs")?.scrollIntoView({ behavior: "smooth" });
   };

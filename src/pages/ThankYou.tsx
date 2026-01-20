@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, Calendar } from "lucide-react";
+import { useMetaPixel } from "@/hooks/useMetaPixel";
 
 // Configuration
 const CONFIG = {
@@ -8,6 +10,19 @@ const CONFIG = {
 
 const ThankYou = () => {
   const navigate = useNavigate();
+  const { trackLead, trackCompleteRegistration } = useMetaPixel();
+
+  // Track Lead & CompleteRegistration events on page load
+  useEffect(() => {
+    trackLead({
+      content_name: 'Dubai Golden Visa Guide',
+      content_category: 'Lead Magnet',
+    });
+    trackCompleteRegistration({
+      content_name: 'Dubai Golden Visa Guide Opt-In',
+      status: 'complete',
+    });
+  }, [trackLead, trackCompleteRegistration]);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
