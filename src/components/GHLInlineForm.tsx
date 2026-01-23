@@ -9,6 +9,9 @@ export default function GHLInlineForm() {
   const hostRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Get current domain for redirect URL
+    const redirectUrl = `${window.location.origin}/thankyou`;
+    
     // Inject iframe markup outside React's managed children
     if (hostRef.current) {
       hostRef.current.innerHTML = `
@@ -41,9 +44,29 @@ export default function GHLInlineForm() {
       document.body.appendChild(script);
     }
 
+    // Listen for form submission messages from iframe
+    const handleMessage = (event: MessageEvent) => {
+      // Check if message is from GHL form
+      if (event.origin.includes('leadconnectorhq.com') || event.origin.includes('msgsndr.com')) {
+        // Look for form submission success
+        if (event.data && (
+          event.data.type === 'form_submit_success' ||
+          event.data.type === 'FORM_SUBMIT_SUCCESS' ||
+          (typeof event.data === 'string' && event.data.includes('success')) ||
+          event.data.formSubmitted === true
+        )) {
+          // Redirect to thank you page
+          window.location.href = redirectUrl;
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
     return () => {
       // Clean up injected markup (safe: React doesn't own these children)
       if (hostRef.current) hostRef.current.innerHTML = "";
+      window.removeEventListener('message', handleMessage);
     };
   }, []);
 

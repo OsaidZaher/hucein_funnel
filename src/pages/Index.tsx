@@ -68,7 +68,7 @@ const Index = () => {
                   Get Your Free Guide
                 </h2>
                 <p className="text-muted-foreground text-center mb-6 text-sm">
-                  Instant access via WhatsApp & Email
+                  Instant access via Email
                 </p>
 
                 <GHLInlineForm />
