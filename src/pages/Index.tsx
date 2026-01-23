@@ -1,10 +1,22 @@
+import { useEffect } from "react";
 import { ChevronDown, Shield, Clock, FileCheck, MessageCircle } from "lucide-react";
 import VSLPlayer from "@/components/VSLPlayer";
 import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import GHLInlineForm from "@/components/GHLInlineForm";
+import { useMetaPixel } from "@/hooks/useMetaPixel";
 
 const Index = () => {
+  const { trackViewContent } = useMetaPixel();
+
+  // Track ViewContent when landing on the page
+  useEffect(() => {
+    trackViewContent({
+      content_name: 'Dubai Golden Visa Guide Landing Page',
+      content_category: 'Lead Magnet',
+    });
+  }, [trackViewContent]);
+
   const scrollToFAQs = () => {
     document.getElementById("faqs")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -41,26 +53,12 @@ const Index = () => {
 
 
 
-          {/* Main Content Grid - Form always above video */}
-          <div className="grid lg:grid-cols-2 gap-10 items-start">
-            {/* Left: VSL + FAQs Button - Shows second */}
-            <div className="space-y-6 animate-fade-in order-2">
-              <VSLPlayer />
-              
-              {/* FAQs Button */}
-              <button
-                onClick={scrollToFAQs}
-                className="w-full flex items-center justify-center gap-2 py-3 text-muted-foreground hover:text-primary transition-colors group"
-              >
-                <span>Have questions? See FAQs</span>
-                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-              </button>
-            </div>
-
-            {/* Right: Form Card - Shows first on mobile */}
+          {/* Main Content Grid - Form above, Video below (centered) */}
+          <div className="flex flex-col items-center gap-10 max-w-2xl mx-auto">
+            {/* Form Card - Shows first */}
             <div
               id="lead-form"
-              className="animate-slide-up order-1 lg:order-2"
+              className="animate-slide-up w-full"
               style={{ animationDelay: "0.2s" }}
             >
               <div className="card-luxury">
@@ -88,6 +86,20 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground">100% Free</p>
                 </div>
               </div>
+            </div>
+
+            {/* VSL + FAQs Button - Shows second, centered below */}
+            <div className="space-y-6 animate-fade-in w-full">
+              <VSLPlayer />
+              
+              {/* FAQs Button */}
+              <button
+                onClick={scrollToFAQs}
+                className="w-full flex items-center justify-center gap-2 py-3 text-muted-foreground hover:text-primary transition-colors group"
+              >
+                <span>Have questions? See FAQs</span>
+                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              </button>
             </div>
           </div>
         </div>
