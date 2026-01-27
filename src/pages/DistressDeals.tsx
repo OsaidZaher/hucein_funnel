@@ -47,25 +47,25 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-4 text-center">
-      <div className="flex flex-col">
-        <span className="text-2xl md:text-3xl font-bold text-primary">{timeLeft.days}</span>
-        <span className="text-xs text-muted-foreground">days</span>
+    <div className="flex items-center justify-center gap-3 md:gap-6 text-center">
+      <div className="flex flex-col bg-white rounded-lg shadow-md px-4 py-3 min-w-[70px]">
+        <span className="text-2xl md:text-3xl font-bold text-emerald-600">{timeLeft.days}</span>
+        <span className="text-xs text-gray-500 uppercase tracking-wide">days</span>
       </div>
-      <span className="text-2xl text-muted-foreground">:</span>
-      <div className="flex flex-col">
-        <span className="text-2xl md:text-3xl font-bold text-primary">{timeLeft.hours}</span>
-        <span className="text-xs text-muted-foreground">hours</span>
+      <span className="text-2xl text-emerald-400 font-light">:</span>
+      <div className="flex flex-col bg-white rounded-lg shadow-md px-4 py-3 min-w-[70px]">
+        <span className="text-2xl md:text-3xl font-bold text-emerald-600">{timeLeft.hours}</span>
+        <span className="text-xs text-gray-500 uppercase tracking-wide">hours</span>
       </div>
-      <span className="text-2xl text-muted-foreground">:</span>
-      <div className="flex flex-col">
-        <span className="text-2xl md:text-3xl font-bold text-primary">{timeLeft.minutes}</span>
-        <span className="text-xs text-muted-foreground">minutes</span>
+      <span className="text-2xl text-emerald-400 font-light">:</span>
+      <div className="flex flex-col bg-white rounded-lg shadow-md px-4 py-3 min-w-[70px]">
+        <span className="text-2xl md:text-3xl font-bold text-emerald-600">{timeLeft.minutes}</span>
+        <span className="text-xs text-gray-500 uppercase tracking-wide">mins</span>
       </div>
-      <span className="text-2xl text-muted-foreground">:</span>
-      <div className="flex flex-col">
-        <span className="text-2xl md:text-3xl font-bold text-primary">{timeLeft.seconds}</span>
-        <span className="text-xs text-muted-foreground">seconds</span>
+      <span className="text-2xl text-emerald-400 font-light">:</span>
+      <div className="flex flex-col bg-white rounded-lg shadow-md px-4 py-3 min-w-[70px]">
+        <span className="text-2xl md:text-3xl font-bold text-emerald-600">{timeLeft.seconds}</span>
+        <span className="text-xs text-gray-500 uppercase tracking-wide">secs</span>
       </div>
     </div>
   );
@@ -89,32 +89,33 @@ const PropertyCard = ({
   completionYear: string;
   description?: string;
 }) => (
-  <div className="card-luxury overflow-hidden group">
-    <div className="aspect-[4/3] overflow-hidden">
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden group border border-emerald-100 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1">
+    <div className="aspect-[4/3] overflow-hidden relative">
       <img
         src={image}
         alt={title}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
     <div className="p-6 space-y-4">
-      <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
-      {description && <p className="text-muted-foreground text-sm">{description}</p>}
+      <h3 className="font-display text-xl font-bold text-gray-900">{title}</h3>
+      {description && <p className="text-gray-600 text-sm">{description}</p>}
       <div className="space-y-2 text-sm">
-        <p className="text-muted-foreground">
-          <span className="text-foreground font-medium">Starting price:</span> {price}
+        <p className="text-gray-600">
+          <span className="text-gray-900 font-medium">Starting price:</span> {price}
         </p>
-        <p className="text-muted-foreground">
-          <span className="text-foreground font-medium">Area:</span> {area}
+        <p className="text-gray-600">
+          <span className="text-gray-900 font-medium">Area:</span> {area}
         </p>
-        <p className="text-muted-foreground">
-          <span className="text-foreground font-medium">Payment plan:</span> {paymentPlan}
+        <p className="text-gray-600">
+          <span className="text-gray-900 font-medium">Payment plan:</span> {paymentPlan}
         </p>
-        <p className="text-muted-foreground">
-          <span className="text-foreground font-medium">Completion year:</span> {completionYear}
+        <p className="text-gray-600">
+          <span className="text-gray-900 font-medium">Completion year:</span> {completionYear}
         </p>
       </div>
-      <button className="btn-gold w-full text-sm py-3">View Details</button>
+      <button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full text-sm py-3 rounded-lg transition-all font-semibold shadow-sm hover:shadow-md">View Details</button>
     </div>
   </div>
 );
@@ -137,27 +138,27 @@ const PricingCard = ({
   badge?: string;
   badgeColor?: string;
 }) => (
-  <div className="card-luxury relative overflow-hidden">
+  <div className={`rounded-xl shadow-lg relative overflow-hidden border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${badge ? 'border-emerald-300 bg-gradient-to-br from-white via-emerald-50/50 to-emerald-100/30' : 'border-emerald-100 bg-white'}`}>
     {badge && (
-      <div className={`absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full`}>
+      <div className="bg-emerald-600 text-white text-xs font-bold px-4 py-2 text-center">
         {badge}
       </div>
     )}
     <div className="p-6 space-y-4">
-      <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
-      <p className="text-muted-foreground text-sm">{subtitle}</p>
+      <h3 className="font-display text-xl font-bold text-gray-900">{title}</h3>
+      <p className="text-gray-600 text-sm">{subtitle}</p>
       <ul className="space-y-3">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-            <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+          <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
+            <Check className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
             <span>{feature}</span>
           </li>
         ))}
       </ul>
-      <div className="pt-4 border-t border-border">
-        <p className="text-2xl font-bold text-primary">{price}</p>
+      <div className="pt-4 border-t border-emerald-100">
+        <p className="text-2xl font-bold text-emerald-600">{price}</p>
       </div>
-      <button className="btn-gold w-full text-sm py-3">{buttonText}</button>
+      <button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full text-sm py-3 rounded-lg transition-all font-semibold shadow-sm hover:shadow-md">{buttonText}</button>
     </div>
   </div>
 );
@@ -170,21 +171,11 @@ const DistressDealsForm = () => {
     if (hostRef.current) {
       hostRef.current.innerHTML = `
         <iframe
-          src="https://api.leadconnectorhq.com/widget/form/l08xUplWrxyWWvSMHtOq"
-          style="width:100%;min-height:500px;height:550px;border:none;border-radius:15px"
-          id="inline-distress-deals-form"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Distress Deals Form"
-          data-height="500"
-          data-layout-iframe-id="inline-distress-deals-form"
-          data-form-id="l08xUplWrxyWWvSMHtOq"
-          title="Distress Deals Form"
+          src="https://api.leadconnectorhq.com/widget/survey/7Do3ifc0FWdJo2YpNef4"
+          style="border:none;width:100%;"
+          scrolling="no"
+          id="7Do3ifc0FWdJo2YpNef4"
+          title="survey"
         ></iframe>
       `;
     }
@@ -240,11 +231,11 @@ const DistressDeals = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Limited Time Banner */}
-      <div className="bg-secondary/80 border-b border-border py-6 px-4">
+      <div className="bg-gradient-to-r from-emerald-50 via-emerald-100/50 to-emerald-50 border-b border-emerald-200 py-8 px-4">
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <p className="text-sm uppercase tracking-wider text-muted-foreground font-medium">
+          <p className="text-sm uppercase tracking-widest text-emerald-700 font-semibold">
             For A Limited Time Only
           </p>
           <CountdownTimer />
@@ -252,21 +243,21 @@ const DistressDeals = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 px-4">
+      <section className="relative py-16 md:py-24 px-4 bg-white">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-100/50 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-50/50 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-6xl mx-auto relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6 animate-fade-in">
-              <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+              <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Own an Iconic Burj View Home in Dubai —{" "}
-                <span className="text-gradient-gold">Under $500k CAD</span> in Feb
+                <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">Under $500k CAD</span> in Feb
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-gray-700 leading-relaxed">
                 Premium, fully-finished 1–2 bedroom residences with uninterrupted Burj Khalifa
                 and Downtown Dubai skyline views. A rare chance to step into Dubai's most
                 desirable address for less than a downtown Toronto condo.
@@ -278,41 +269,41 @@ const DistressDeals = () => {
                   "Fully managed, turnkey ownership for overseas buyers",
                   "Flexible payment plans with developer financing",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 text-foreground">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <li key={index} className="flex items-center gap-3 text-gray-900">
+                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button onClick={scrollToForm} className="btn-gold">
+                <button onClick={scrollToForm} className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                   Get Price List
                 </button>
                 <a
                   href="https://api.leadconnectorhq.com/widget/booking/HEZ6qy9e3Kpmi2R3zMAP"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/10 transition-all text-center"
+                  className="px-8 py-4 rounded-lg border-2 border-emerald-600 text-emerald-600 font-semibold hover:bg-emerald-50 transition-all text-center hover:shadow-md"
                 >
                   Book Virtual Tour
                 </a>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-600">
                 Limited inventory remaining in current release. Secure first access & CAD-priced
                 opportunities today.
               </p>
             </div>
 
             {/* Right Form */}
-            <div className="card-luxury animate-slide-up" style={{ animationDelay: "0.2s" }}>
-              <h2 className="font-display text-xl font-bold text-foreground mb-2 text-center">
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-emerald-100 animate-slide-up ring-1 ring-emerald-50" style={{ animationDelay: "0.2s" }}>
+              <h2 className="font-display text-xl font-bold text-gray-900 mb-3 text-center">
                 Get your tailored list of options under 500k CAD
               </h2>
-              <p className="text-muted-foreground text-center text-sm mb-4">
+              <p className="text-gray-600 text-center text-sm mb-4">
                 What best describes your interest in Dubai property?
               </p>
               <DistressDealsForm />
-              <p className="text-xs text-muted-foreground text-center mt-4">
+              <p className="text-xs text-gray-500 text-center mt-4">
                 No obligation. A local Dubai property specialist will follow up within 24 hours.
               </p>
             </div>
@@ -321,14 +312,14 @@ const DistressDeals = () => {
       </section>
 
       {/* Property Options Section */}
-      <section className="py-20 px-4 bg-navy-dark/50">
+      <section className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Current Burj View Options{" "}
-              <span className="text-gradient-gold">Under $500k CAD</span>
+              <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">Under $500k CAD</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Curated shortlist — select units that deliver Burj views and strong value.
             </p>
           </div>
@@ -373,18 +364,18 @@ const DistressDeals = () => {
       </section>
 
       {/* Affordable Luxury Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <p className="text-sm uppercase tracking-wider text-primary font-medium">
+              <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium">
                 Affordable Luxury in the Heart of Dubai
               </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
                 Wake up to the world's most famous skyline —{" "}
-                <span className="text-gradient-gold">for less than you think.</span>
+                <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">for less than you think.</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Dubai Skyline Residences is a curated collection of high-floor apartments with
                 unobstructed Burj Khalifa views, resort-style amenities, and hotel-inspired
                 services. Designed for both end-users and investors, each residence pairs timeless
@@ -397,13 +388,13 @@ const DistressDeals = () => {
                   "Freehold ownership for foreigners with residency pathway options",
                   "Minutes to Dubai Mall, Business Bay and DIFC",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <li key={index} className="flex items-center gap-3 text-gray-700">
+                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-muted-foreground italic">
+              <p className="text-sm text-gray-600 italic">
                 Ideal for Canadians and international buyers seeking a tax-efficient,
                 income-generating asset in a world city with no property tax on residential units.
               </p>
@@ -419,15 +410,15 @@ const DistressDeals = () => {
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-xl">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <p className="text-2xl font-bold text-primary">$495k CAD</p>
+                    <p className="text-2xl font-bold text-emerald-400">$495k CAD</p>
                     <p className="text-xs text-gray-300">Starting price*</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-primary">7–10%</p>
+                    <p className="text-2xl font-bold text-emerald-400">7–10%</p>
                     <p className="text-xs text-gray-300">Projected gross yield</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-primary">Q4 2026</p>
+                    <p className="text-2xl font-bold text-emerald-400">Q4 2026</p>
                     <p className="text-xs text-gray-300">Estimated completion</p>
                   </div>
                 </div>
@@ -438,7 +429,7 @@ const DistressDeals = () => {
       </section>
 
       {/* Views Section */}
-      <section className="py-20 px-4 bg-navy-dark/50">
+      <section className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
@@ -449,14 +440,14 @@ const DistressDeals = () => {
               />
             </div>
             <div className="order-1 lg:order-2 space-y-6">
-              <p className="text-sm uppercase tracking-wider text-primary font-medium">
+              <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium">
                 Uninterrupted Burj Khalifa Vistas
               </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
                 Every evening, your living room becomes front-row seats to the{" "}
-                <span className="text-gradient-gold">Burj Khalifa light show.</span>
+                <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">Burj Khalifa light show.</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Floor-to-ceiling glass walls frame Dubai's most iconic landmark — from sunrise
                 over Downtown to the nightly fountain shows below. This is more than a view; it's
                 a global status symbol and a constant reminder that you own a piece of the
@@ -469,13 +460,13 @@ const DistressDeals = () => {
                   "Glazing engineered for heat + sound insulation",
                   'Ideal for premium nightly rentals with "Burj View" keyword demand',
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <Eye className="w-5 h-5 text-primary flex-shrink-0" />
+                  <li key={index} className="flex items-center gap-3 text-gray-700">
+                    <Eye className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <button onClick={scrollToForm} className="btn-gold">
+              <button onClick={scrollToForm} className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
                 See Available View Lines
               </button>
             </div>
@@ -484,17 +475,17 @@ const DistressDeals = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-wider text-primary font-medium mb-4">
+            <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium mb-4">
               Pricing & Payment
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Luxury Burj Views at a{" "}
-              <span className="text-gradient-gold">Fraction of Canadian Prices</span>
+              <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">Fraction of Canadian Prices</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Choose between flexible payment plans or upfront discounts. All figures below
               shown in CAD for clarity, based on today's FX rates.
             </p>
@@ -541,13 +532,13 @@ const DistressDeals = () => {
             />
           </div>
 
-          <p className="text-xs text-muted-foreground text-center mt-8">
+          <p className="text-xs text-gray-500 text-center mt-8">
             *Pricing shown is indicative in CAD and may vary with currency fluctuations and availability.
             A Dubai-licensed advisor will provide a live price list and payment plan tailored to your budget.
           </p>
 
           <div className="text-center mt-8">
-            <button onClick={scrollToForm} className="btn-gold">
+            <button onClick={scrollToForm} className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
               Get CAD Investment Breakdown
             </button>
           </div>
@@ -555,55 +546,55 @@ const DistressDeals = () => {
       </section>
 
       {/* Amenities Section */}
-      <section className="py-20 px-4 bg-navy-dark/50">
+      <section className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-wider text-primary font-medium mb-4">
+            <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium mb-4">
               Connected, Cosmopolitan, Effortless
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
               Live in the centre of{" "}
-              <span className="text-gradient-gold">everything Dubai is famous for.</span>
+              <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">everything Dubai is famous for.</span>
             </h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
               From Michelin-star restaurants and designer shopping to beach clubs and business
               hubs, your new address places you at the apex of Dubai living.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="card-luxury text-center p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Star className="w-8 h-8 text-primary" />
+            <div className="bg-white rounded-xl shadow-lg text-center p-8 border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <Star className="w-8 h-8 text-emerald-600" />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-4">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-4">
                 Resort-Level Amenities
               </h3>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-gray-600 text-sm">
                 Infinity pool with Burj views, fully equipped gym, spa, kids' play areas,
                 residents' lounge and 24/7 concierge — all managed like a 5-star hotel.
               </p>
             </div>
-            <div className="card-luxury text-center p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <MapPin className="w-8 h-8 text-primary" />
+            <div className="bg-white rounded-xl shadow-lg text-center p-8 border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <MapPin className="w-8 h-8 text-emerald-600" />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-4">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-4">
                 Prime Downtown Access
               </h3>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-gray-600 text-sm">
                 Reach Dubai Mall, Business Bay, DIFC, and Dubai International Airport in
                 minutes, while still enjoying a private sanctuary above the city buzz.
               </p>
             </div>
-            <div className="card-luxury text-center p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Building2 className="w-8 h-8 text-primary" />
+            <div className="bg-white rounded-xl shadow-lg text-center p-8 border border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <Building2 className="w-8 h-8 text-emerald-600" />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-4">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-4">
                 Hands-Off Ownership
               </h3>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-gray-600 text-sm">
                 Professional property management, tenant sourcing, and short-term rental
                 services available so you can own in Dubai while living abroad with peace of mind.
               </p>
@@ -613,18 +604,18 @@ const DistressDeals = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contact-form" className="py-20 px-4">
+      <section id="contact-form" className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <p className="text-sm uppercase tracking-wider text-primary font-medium">
+              <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium">
                 Next Steps
               </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
                 Request full details, floor plans &{" "}
-                <span className="text-gradient-gold">CAD investment analysis.</span>
+                <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">CAD investment analysis.</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Share your details and a Dubai-licensed property specialist will send you
                 current availability, CAD-priced payment options, and a tailored cashflow projection
                 for your budget.
@@ -636,22 +627,22 @@ const DistressDeals = () => {
                   "Virtual tours and video walkthroughs available",
                   "Priority access before units hit public portals",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <li key={index} className="flex items-center gap-3 text-gray-700">
+                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="card-luxury">
-              <h3 className="font-display text-xl font-bold text-foreground mb-2 text-center">
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-emerald-100 ring-1 ring-emerald-50">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-3 text-center">
                 Get the Dubai Burj View Investment Kit
               </h3>
-              <p className="text-muted-foreground text-sm text-center mb-4">
+              <p className="text-gray-600 text-sm text-center mb-4">
                 Fill out the form below and receive:
               </p>
-              <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+              <ul className="space-y-2 text-sm text-gray-600 mb-6">
                 {[
                   "Brochure & floor plans (PDF)",
                   "Latest inventory & price list",
@@ -659,13 +650,13 @@ const DistressDeals = () => {
                   "Step-by-step guide to buying from abroad",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
               <DistressDealsForm />
-              <p className="text-xs text-muted-foreground text-center mt-4">
+              <p className="text-xs text-gray-500 text-center mt-4">
                 By submitting, you agree to be contacted by a Dubai Skyline Residences partner
                 agency. Your information is kept confidential and you may unsubscribe at any time.
               </p>
@@ -675,17 +666,17 @@ const DistressDeals = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 bg-navy-dark/50">
+      <section className="py-20 px-4 bg-emerald-50">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-wider text-primary font-medium mb-4">
+            <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium mb-4">
               FAQs
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Answers to common questions from{" "}
-              <span className="text-gradient-gold">Canadian & overseas buyers.</span>
+              <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">Canadian & overseas buyers.</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-gray-600">
               If you don't see your question below, request the investment kit and our team
               will walk you through everything 1:1.
             </p>
@@ -696,12 +687,11 @@ const DistressDeals = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="card-luxury border-border/50 px-6"
-              >
-                <AccordionTrigger className="text-left text-foreground hover:text-primary transition-colors py-4">
+                className="bg-white rounded-xl shadow-lg border border-emerald-100 px-6 hover:shadow-xl transition-shadow duration-300">
+                <AccordionTrigger className="text-left text-gray-900 hover:text-emerald-600 transition-colors py-5 font-medium">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
+                <AccordionContent className="text-gray-600 pb-4 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -711,23 +701,23 @@ const DistressDeals = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wider text-primary font-medium mb-4">
+          <p className="text-sm uppercase tracking-wider text-emerald-600 font-medium mb-4">
             Dubai Skyline Residences
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Your Burj Khalifa view is closer — and{" "}
-            <span className="text-gradient-gold">more affordable</span> — than you think.
+            <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">more affordable</span> — than you think.
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+          <p className="text-gray-700 mb-8 max-w-xl mx-auto">
             Request the full information kit now and discover how owning a Burj-view home in
             Dubai can fit comfortably under a $500k CAD budget.
           </p>
-          <button onClick={scrollToForm} className="btn-gold text-lg px-10 py-5">
+          <button onClick={scrollToForm} className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg px-10 py-5 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
             Get the Investment Kit
           </button>
-          <p className="text-sm text-muted-foreground mt-6">
+          <p className="text-sm text-gray-600 mt-6">
             No spam. No pressure. Just clear numbers, world-class views, and a conversation
             about whether this fits your goals.
           </p>
@@ -735,9 +725,9 @@ const DistressDeals = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border">
+      <footer className="py-10 px-4 border-t border-emerald-200 bg-gradient-to-b from-white to-emerald-50/50">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-gray-600">
             © 2026 Dubai Skyline Residences. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
@@ -745,7 +735,7 @@ const DistressDeals = () => {
               href="https://wa.link/z62upv"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="flex items-center gap-2 text-sm text-gray-600 hover:text-emerald-600 transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               WhatsApp
